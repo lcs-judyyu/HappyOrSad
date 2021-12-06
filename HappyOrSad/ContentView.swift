@@ -21,25 +21,43 @@ struct GrowingButton: ButtonStyle {
     }
 }
 
+//limit textfield input length
+//func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+//    let currentText = textField.text ?? ""
+//    guard let stringRange = Range(range, in: currentText) else { return false }
+//    let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+//    return updatedText.count <= 1
+//}
+
 struct ContentView: View {
     
     //MARK: Stored Properties
     @State private var textFieldData = ""
     
+    //MARK: Computed Properties
+//    var feedback: String {
+//        if textFieldData == "" {
+//            return ""
+//        } else if textFieldData == "😉" {
+//            return "Looks like you are feeling great! Glad to hear! 😉"
+//        } else {
+//            return "Sorry, please enter a valid emoji. If you did, we are still working on providing feedback for every emoji. Thanks! 😊"
+//        }
+//    }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center, spacing: 20) {
             
-            TextField("Enter An Emoji😉☺️😆", text: $textFieldData)
-             .font(Font.system(size: 27, design: .monospaced))
-             .padding(10)
-             .overlay(
-             // Add the outline
-            RoundedRectangle(cornerRadius: 8)
-             .stroke(Color.purple, lineWidth: 2)
-             )
-             .padding(.horizontal, 15)
-             .padding(.bottom, 25)
+            TextField("Enter An Emoji 😉 ☺️ 😆 😝", text: $textFieldData)
+                .font(.title)
+                .padding(10)
+                .overlay(
+                    // Add the outline
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.purple, lineWidth: 2)
+                )
+                .padding(.horizontal, 15)
             
             Button(action: {
                 print("Button was pressed")
@@ -48,6 +66,8 @@ struct ContentView: View {
                     .bold()
             })
                 .buttonStyle(GrowingButton())
+            
+            //Text(feedback)
         }
     }
 }
