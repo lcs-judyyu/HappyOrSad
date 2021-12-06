@@ -31,14 +31,6 @@ private func textLimit(existingText: String?,
     return isAtLimit
 }
 
-//func textField(_ textField: UITextField,
-//               shouldChangeCharactersIn range: NSRange,
-//               replacementString string: String) -> Bool {
-//    return self.textLimit(existingText: textField.text,
-//                          newText: string,
-//                          limit: 1)
-//}
-
 struct ContentView: View {
     
     //MARK: Stored Properties
@@ -48,9 +40,12 @@ struct ContentView: View {
     
     //MARK: Computed Properties
     var feedback: String {
-        if textFieldData == "😉" {
+        switch textFieldData {
+        case "😉":
             return "Looks like you are feeling great! Glad to hear! 😉"
-        } else {
+        case "😀", "😃", "😄", "😁", "😆":
+            return "Having a good day? Yeahhhhh"
+        default:
             return "Sorry, please enter a valid emoji. If you did, we are still working on providing feedback for every emoji. Thanks! 😊"
         }
     }
@@ -89,6 +84,9 @@ struct ContentView: View {
                     .background(Color.purple.opacity(0.3))
                     .padding(.horizontal, 20)
             }
+//            if textFieldData == .isEmpty {
+//                showFeedback.toggle()
+//            }
         }
     }
 }
