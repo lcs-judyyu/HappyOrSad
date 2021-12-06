@@ -22,12 +22,21 @@ struct GrowingButton: ButtonStyle {
 }
 
 //limit textfield input length
-//func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-//    let currentText = textField.text ?? ""
-//    guard let stringRange = Range(range, in: currentText) else { return false }
-//    let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-//    return updatedText.count <= 1
+private func textLimit(existingText: String?,
+                       newText: String,
+                       limit: Int) -> Bool {
+    let text = existingText ?? ""
+    let isAtLimit = text.count + newText.count <= limit
+    return isAtLimit
+}
+
+//func textField(_ textField: UITextField,
+//               shouldChangeCharactersIn range: NSRange,
+//               replacementString string: String) -> Bool {
+//    return self.textLimit(existingText: textField.text,
+//                          newText: string,
+//                          limit: 1)
 //}
 
 struct ContentView: View {
@@ -36,18 +45,18 @@ struct ContentView: View {
     @State private var textFieldData = ""
     
     //MARK: Computed Properties
-//    var feedback: String {
-//        if textFieldData == "" {
-//            return ""
-//        } else if textFieldData == "😉" {
-//            return "Looks like you are feeling great! Glad to hear! 😉"
-//        } else {
-//            return "Sorry, please enter a valid emoji. If you did, we are still working on providing feedback for every emoji. Thanks! 😊"
-//        }
-//    }
+    var feedback: String {
+        if textFieldData == "" {
+            return ""
+        } else if textFieldData == "😉" {
+            return "Looks like you are feeling great! Glad to hear! 😉"
+        } else {
+            return "Sorry, please enter a valid emoji. If you did, we are still working on providing feedback for every emoji. Thanks! 😊"
+        }
+    }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 20) {
+        VStack(alignment: .center, spacing: 30) {
             
             TextField("Enter An Emoji 😉 ☺️ 😆 😝", text: $textFieldData)
                 .font(.title)
@@ -67,7 +76,7 @@ struct ContentView: View {
             })
                 .buttonStyle(GrowingButton())
             
-            //Text(feedback)
+            Text(feedback)
         }
     }
 }
