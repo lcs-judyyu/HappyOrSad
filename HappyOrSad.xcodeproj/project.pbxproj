@@ -14,7 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A3E7FC1275E85860076643D /* HappyOrSad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyOrSad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A3E7FC1275E85860076643D /* Mood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A3E7FC4275E85860076643D /* HappyOrSadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyOrSadApp.swift; sourceTree = "<group>"; };
 		5A3E7FC6275E85860076643D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5A3E7FC8275E859B0076643D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 		5A3E7FC2275E85860076643D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5A3E7FC1275E85860076643D /* HappyOrSad.app */,
+				5A3E7FC1275E85860076643D /* Mood.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,7 +84,7 @@
 			);
 			name = HappyOrSad;
 			productName = HappyOrSad;
-			productReference = 5A3E7FC1275E85860076643D /* HappyOrSad.app */;
+			productReference = 5A3E7FC1275E85860076643D /* Mood.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -283,7 +283,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.judyyu.HappyOrSad;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Mood;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -312,7 +312,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.judyyu.HappyOrSad;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Mood;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

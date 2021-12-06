@@ -57,6 +57,8 @@ struct ContentView: View {
             return "❤️❤️❤️"
         case "🥱", "😴":
             return "I got you... Consider taking a short nap. It helps a lot!"
+        case "😣", "😖", "😫", "😩":
+            return "Sorry to hear that you are sad. Try to grab something write with – then describe what's happening. Sometimes writing down why we are feeling sad can make us feel better :)"
         default:
             return "Sorry, please enter a valid emoji. If you did, we are still working on providing feedback for every emoji. Thanks! 😊"
         }
@@ -69,6 +71,7 @@ struct ContentView: View {
             TextField("Enter An Emoji 😉 ☺️ 😆 😝", text: $textFieldData)
                 .font(.title)
                 .padding(10)
+                .keyboardType(UIKeyboardType.default)
                 .overlay(
                     // Add the outline
                     RoundedRectangle(cornerRadius: 8)
@@ -78,7 +81,6 @@ struct ContentView: View {
             
             Button(action: {
                 showFeedback.toggle()
-                print("Buttom is pressed")
             }, label: {
                 Text("Submit My Emoji")
                     .bold()
@@ -91,7 +93,7 @@ struct ContentView: View {
                     .padding(15)
                     .overlay(
                             RoundedRectangle(cornerRadius: 15)
-                                .stroke(Color.gray, lineWidth: 4)
+                                .stroke(Color.gray, lineWidth: 3)
                         )
                     .background(Color.purple.opacity(0.3))
                     .padding(.horizontal, 20)
