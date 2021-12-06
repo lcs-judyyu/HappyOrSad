@@ -44,17 +44,18 @@ struct ContentView: View {
     //MARK: Stored Properties
     @State private var textFieldData = ""
     
+    @State private var showFeedback = false
+    
     //MARK: Computed Properties
     var feedback: String {
-        if textFieldData == "" {
-            return ""
-        } else if textFieldData == "😉" {
+        if textFieldData == "😉" {
             return "Looks like you are feeling great! Glad to hear! 😉"
         } else {
             return "Sorry, please enter a valid emoji. If you did, we are still working on providing feedback for every emoji. Thanks! 😊"
         }
     }
     
+    //content
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
             
@@ -64,25 +65,38 @@ struct ContentView: View {
                 .overlay(
                     // Add the outline
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.purple, lineWidth: 2)
+                        .stroke(Color.purple, lineWidth: 2.5)
                 )
                 .padding(.horizontal, 15)
             
             Button(action: {
-                print("Button was pressed")
+                showFeedback.toggle()
+                print("Buttom is pressed")
             }, label: {
                 Text("Submit My Emoji")
                     .bold()
             })
                 .buttonStyle(GrowingButton())
             
-            Text(feedback)
+            if showFeedback {
+                Text(feedback)
+                    .font(.body)
+                    .padding(15)
+                    .overlay(
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(Color.gray, lineWidth: 4)
+                        )
+                    .background(Color.purple.opacity(0.3))
+                    .padding(.horizontal, 20)
+            }
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NavigationView {
+            ContentView()
+        }
     }
 }
