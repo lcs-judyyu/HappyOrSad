@@ -41,10 +41,22 @@ struct ContentView: View {
     //MARK: Computed Properties
     var feedback: String {
         switch textFieldData {
-        case "😉":
-            return "Looks like you are feeling great! Glad to hear! 😉"
+        case "😉", "☺️", "😋", "😛", "😝":
+            return "Looks like you are feeling great! Glad to hear!"
         case "😀", "😃", "😄", "😁", "😆":
             return "Having a good day? Yeahhhhh"
+        case "😢", "😭", "🙁", "☹️":
+            return "Sorry to hear that you are sad. Consider reaching out to a friend, just to talk."
+        case "😤", "😠", "😡", "🤬", "🤯":
+            return "Oh no, too much to handle in life? Take a break, get some sleep or have your favourite treat might help."
+        case "😷":
+            return "Yeah... Masks can be annoying to wear sometimes, but it keeps you safe from the viruses!"
+        case "🤢", "🤮", "🤧", "🤒", "🤕":
+            return "Sorry to hear that you are feeling sick. Rest more and you will get better soon!"
+        case "😍", "🥰", "😘", "😗", "😙":
+            return "❤️❤️❤️"
+        case "🥱", "😴":
+            return "I got you... Consider taking a short nap. It helps a lot!"
         default:
             return "Sorry, please enter a valid emoji. If you did, we are still working on providing feedback for every emoji. Thanks! 😊"
         }
@@ -84,9 +96,6 @@ struct ContentView: View {
                     .background(Color.purple.opacity(0.3))
                     .padding(.horizontal, 20)
             }
-//            if textFieldData == .isEmpty {
-//                showFeedback.toggle()
-//            }
         }
     }
 }
