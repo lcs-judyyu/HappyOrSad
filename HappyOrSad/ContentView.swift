@@ -68,7 +68,7 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
             
-            TextField("Enter An Emoji 😉 ☺️ 😆 😝", text: $textFieldData)
+            TextField("Enter An Emoji 😉 ☺️ 😆", text: $textFieldData)
                 .font(.title)
                 .padding(10)
                 .keyboardType(UIKeyboardType.default)
@@ -77,7 +77,7 @@ struct ContentView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.purple, lineWidth: 2.5)
                 )
-                .padding(.horizontal, 15)
+                .padding(.horizontal, 25)
             
             Button(action: {
                 showFeedback.toggle()
