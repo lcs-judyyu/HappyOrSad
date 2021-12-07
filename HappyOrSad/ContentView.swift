@@ -23,13 +23,13 @@ struct GrowingButton: ButtonStyle {
 
 //limit textfield input length
 
-private func textLimit(existingText: String?,
-                       newText: String,
-                       limit: Int) -> Bool {
-    let text = existingText ?? ""
-    let isAtLimit = text.count + newText.count <= limit
-    return isAtLimit
-}
+//private func textLimit(existingText: String?,
+//                       newText: String,
+//                       limit: Int) -> Bool {
+//    let text = existingText ?? ""
+//    let isAtLimit = text.count + newText.count <= limit
+//    return isAtLimit
+//}
 
 struct ContentView: View {
     
@@ -97,6 +97,10 @@ struct ContentView: View {
                         )
                     .background(Color.purple.opacity(0.3))
                     .padding(.horizontal, 20)
+                    .animation(Animation.easeIn(duration: 1.0), value: showFeedback)
+                    .onTapGesture {
+                      showFeedback.toggle()
+                    }
             }
         }
     }
