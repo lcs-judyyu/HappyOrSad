@@ -23,13 +23,18 @@ struct GrowingButton: ButtonStyle {
 
 //limit textfield input length
 
-//private func textLimit(existingText: String?,
-//                       newText: String,
-//                       limit: Int) -> Bool {
-//    let text = existingText ?? ""
-//    let isAtLimit = text.count + newText.count <= limit
-//    return isAtLimit
-//}
+class TextFieldManager: ObservableObject {
+    
+    let characterLimit = 1
+    
+    @Published var userInput = "" {
+        didSet {
+            if userInput.count > characterLimit {
+                userInput = String(userInput.prefix(characterLimit))
+            }
+        }
+    }
+}
 
 struct ContentView: View {
     
@@ -38,7 +43,10 @@ struct ContentView: View {
     
     @State private var showFeedback = false
     
+    @ObservedObject var textFieldManager = TextFieldManager()
+    
     //MARK: Computed Properties
+    
     var feedback: String {
         switch textFieldData {
         case "😉", "☺️", "😋", "😛", "😝":
@@ -68,7 +76,7 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
             
-            TextField("Enter An Emoji 😉 ☺️ 😆", text: $textFieldData)
+            TextField("Enter An Emoji 😉 ☺️ 😆", text:$textFieldData)
                 .font(.title)
                 .padding(10)
                 .keyboardType(UIKeyboardType.default)
@@ -86,20 +94,21 @@ struct ContentView: View {
                     .bold()
             })
                 .buttonStyle(GrowingButton())
+                .disabled(textFieldData.isEmpty)
             
             if showFeedback {
                 Text(feedback)
                     .font(.body)
                     .padding(15)
                     .overlay(
-                            RoundedRectangle(cornerRadius: 15)
-                                .stroke(Color.gray, lineWidth: 3)
-                        )
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(Color.gray, lineWidth: 3)
+                    )
                     .background(Color.purple.opacity(0.3))
                     .padding(.horizontal, 20)
                     .animation(Animation.easeIn(duration: 1.0), value: showFeedback)
                     .onTapGesture {
-                      showFeedback.toggle()
+                        showFeedback.toggle()
                     }
             }
         }
